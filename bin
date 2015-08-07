@@ -1,10 +1,13 @@
 var core = require('canner-core');
 var argv = require('minimist')(process.argv.slice(2));
 
+var fs = require('fs-extra');
 var path = require('path');
 
 var load = argv._[0];
-var watch = argv.w;
+var project = argv._[1];
+var w = argv.w;
+var i
 
 var twstat = {};
 
@@ -33,15 +36,40 @@ twstat.build = function(load, w) {
           }
         })
   }
-
 }
 
+twstat.init = function(load, project) {
+  var list_path = path.join(process.cwd(), 'lists.json')
+  var lists = require(list_path);
 
-if(path.extname(load) === '.js' && watch){
-  twstat.build(load, watch);
-}else if(path.extname(load) === '.js' && !watch){
-  twstat.build(load);
-}else{
-  throw new Error("Usage: twstat <twstat configuration file>");
+  lists.data.page.unshift({
+    "title": project,
+    "url": project,
+    "img": "images/" + project + ".png",
+    "description": "Project description"
+  })
+
+  var new_file = path.join(process.cwd(), project, 'index.hbs');
+
+  if(!fs.existsSync(new_file))
+    fs.copy(path.join(__dirname, 'init.hbs'), new_file, function(err) {if(err) return console.error(err)})
+
+  console.log('Init your project: ' + new_file);
+  fs.writeFileSync(list_path, JSON.stringify(lists, null, 2))
+  console.log('Add your project to lists.json: ' + list_path)
 }
 
+if(load === 'init' && project) {
+  // init project
+  twstat.init(load, project)
+}else if (load === 'init' && !project) {
+  throw new Error("Usage: twstat init <project name>");
+}else {
+  if(path.extname(load) === '.js' && w){
+    twstat.build(load, watch);
+  }else if(path.extname(load) === '.js' && !w){
+    twstat.build(load);
+  }else{
+    throw new Error("Usage: twstat <twstat configuration file>");
+  }
+}
