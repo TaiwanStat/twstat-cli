@@ -68,7 +68,7 @@ if(load === 'init' && project) {
   throw new Error("Usage: twstat init <project name>");
 }else {
   if(path.extname(load) === '.js' && w){
-    twstat.build(load, watch);
+    twstat.build(load, w);
   }else if(path.extname(load) === '.js' && !w){
     twstat.build(load);
   }else{
