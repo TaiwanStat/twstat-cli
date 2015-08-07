@@ -1,0 +1,30 @@
+{
+  "name": "twstat-cli",
+  "version": "0.0.0",
+  "description": "cli tool for taiwanstat",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "twstat": "./bin"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TaiwanStat/twstat-cli.git"
+  },
+  "keywords": [
+    "taiwanstat",
+    "canner"
+  ],
+  "author": "chilijung <chilijung@gmail.com> (http://lijung.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TaiwanStat/twstat-cli/issues"
+  },
+  "homepage": "https://github.com/TaiwanStat/twstat-cli",
+  "dependencies": {
+    "canner-core": "0.0.7",
+    "minimist": "^1.1.3"
+  }
+}
