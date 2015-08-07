@@ -31,7 +31,7 @@ twstat init test
 
 this command will extend a new object in `lists.json`
 
-```
+```js
   {
     "title": "test",
     "url": "test",
@@ -46,7 +46,7 @@ In side the folder there is a file called `index.hbs`
 
 `index.hbs`:
 
-```
+```html
 <!DOCTYPE html>
 <head>
   {{> header}}
