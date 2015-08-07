@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 var core = require('canner-core');
 var argv = require('minimist')(process.argv.slice(2));
 
