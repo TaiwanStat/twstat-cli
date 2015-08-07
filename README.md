@@ -6,7 +6,7 @@ A cli tool for twstat development usage.
 ## Install 
 
 ```
-sudo npm install -g twstst-cli
+sudo npm install -g twstat-cli
 ```
 
 #### Build project
