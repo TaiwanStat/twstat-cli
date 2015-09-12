@@ -12,7 +12,7 @@ sudo npm install -g twstat-cli
 #### Build project
 
 ```
-twstat chart-item.js
+twstat chart_item.js
 ```
 
 #### watch project
