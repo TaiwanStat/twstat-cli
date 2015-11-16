@@ -5,7 +5,6 @@ var argv = require('minimist')(process.argv.slice(2));
 
 var fs = require('fs-extra');
 var path = require('path');
-
 var load = argv._[0];
 var project = argv._[1];
 var w = argv.w;
@@ -29,7 +28,7 @@ twstat.build = function(load, w, minify) {
           cwd: json_root,
           serve: json_root,
           output: json_root,
-          minify: minify
+          minify: minify,
           reloader: function() {
             return posts;
           },
@@ -67,13 +66,13 @@ if(load === 'init' && project) {
   // init project
   twstat.init(load, project)
 }else if (load === 'init' && !project) {
-  throw new Error("Usage: twstat init <project name>");
+    console.log("Usage: twstat init <project name>");
 }else {
   if(path.extname(load) === '.js' && w){
     twstat.build(load, w);
   }else if(path.extname(load) === '.js' && !w){
     twstat.build(load);
   }else{
-    throw new Error("Usage: twstat <twstat configuration file>");
+    console.log("Usage: twstat <twstat configuration file>");
   }
 }
