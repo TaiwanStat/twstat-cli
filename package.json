@@ -1,6 +1,6 @@
 {
   "name": "twstat-cli",
-  "version": "0.0.5",
+  "version": "0.0.7",
   "description": "cli tool for taiwanstat",
   "main": "index.js",
   "scripts": {
@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/TaiwanStat/twstat-cli",
   "dependencies": {
-    "canner-core": "0.2.8",
+    "canner-core": "0.3.0",
     "fs-extra": "^0.23.0",
     "minimist": "^1.1.3"
   }
