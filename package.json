@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/TaiwanStat/twstat-cli",
   "dependencies": {
-    "canner-core": "0.0.7",
+    "canner-core": "0.2.8",
     "fs-extra": "^0.23.0",
     "minimist": "^1.1.3"
   }
