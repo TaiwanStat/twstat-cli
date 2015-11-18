@@ -58,9 +58,20 @@ twstat.init = function(load, project) {
   });
 
   var new_file = path.join(process.cwd(), project, 'index.hbs');
+  var js = path.join(process.cwd(), project, 'js', 'index.js');
+  var css = path.join(process.cwd(), project, 'css','style.css');
 
   if(!fs.existsSync(new_file)) { 
-    fs.copy(path.join(__dirname, 'init.hbs'), new_file, function(err) {
+
+    fs.copy(path.join(__dirname, './init/init.hbs'), new_file, function(err) {
+      if(err) return console.error(err);
+    });
+
+    fs.copy(path.join(__dirname, './init/js/index.js'), js, function(err) {
+      if(err) return console.error(err);
+    });
+
+    fs.copy(path.join(__dirname, './init/css/style.css'), css, function(err) {
       if(err) return console.error(err);
     });
   }
