@@ -36,11 +36,6 @@ twstat.build = function(load, w) {
           minify: minify,
           reloader: function() {
             return posts;
-          },
-          changeFilter: function (row, f, curr, prev) {
-            if(path.extname(f) === '.hbs') {
-              return (f === path.resolve(json_root, row.layout));
-            }
           }
         });
   }
