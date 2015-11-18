@@ -49,16 +49,24 @@ In side the folder there is a file called `index.hbs`
 ```html
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang='zh-TW'>
-<head>
-  {{> header}}
+  <head>
+    {{> head}}
     <!-- my js & css -->
-</head>
-<body>
-  {{> start}}
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+  </head>
+  <body>
+    {{> header}}
+    {{> start}}
     <!-- my charts -->
-  {{> end}}
+    <div class="chart">
+
+    </div>
+    {{> end}}
     <!-- my js & css -->
-  {{> footer}}
-</body>
+    {{> footer}}
+    <script type="text/javascript" src="./js/index.js"></script>
+  </body>
 </html>
 ```
+
+and also have empty css and js file in the folder.
