@@ -23,6 +23,12 @@ add watch option, will rebuild only the specific which is modifed.
 twstat chart-item.js -w
 ```
 
+### minify project
+
+```
+twstat chart-item.js -m
+```
+
 #### Init your project
 
 ```
