@@ -48,6 +48,7 @@ In side the folder there is a file called `index.hbs`
 
 ```html
 <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang='zh-TW'>
 <head>
   {{> header}}
     <!-- my js & css -->
@@ -59,4 +60,5 @@ In side the folder there is a file called `index.hbs`
     <!-- my js & css -->
   {{> footer}}
 </body>
+</html>
 ```
