@@ -9,7 +9,7 @@ var load = argv._[0];
 var project = argv._[1];
 var w = argv.w;
 var minify = argv.m;
-var i
+var i;
 
 var twstat = {};
 
@@ -19,12 +19,16 @@ twstat.build = function(load, w) {
   var posts = require(path.resolve(process.cwd(), load));
 
   if(!w) {
+
+    // build
     fn = core.build(posts, {
           cwd: json_root,
           output: json_root,
           minify: minify
-        })
-  }else {
+        });
+  } else {
+
+    // watch
     fn = core.watch(posts, {
           cwd: json_root,
           serve: json_root,
@@ -38,12 +42,12 @@ twstat.build = function(load, w) {
               return (f === path.resolve(json_root, row.layout));
             }
           }
-        })
+        });
   }
-}
+};
 
 twstat.init = function(load, project) {
-  var list_path = path.join(process.cwd(), 'lists.json')
+  var list_path = path.join(process.cwd(), 'lists.json');
   var lists = require(list_path);
 
   lists.data.page.unshift({
@@ -51,29 +55,35 @@ twstat.init = function(load, project) {
     "url": project,
     "img": "images/" + project + ".png",
     "description": "Project description"
-  })
+  });
 
   var new_file = path.join(process.cwd(), project, 'index.hbs');
 
-  if(!fs.existsSync(new_file))
-    fs.copy(path.join(__dirname, 'init.hbs'), new_file, function(err) {if(err) return console.error(err)})
+  if(!fs.existsSync(new_file)) { 
+    fs.copy(path.join(__dirname, 'init.hbs'), new_file, function(err) {
+      if(err) return console.error(err);
+    });
+  }
 
   console.log('Init your project: ' + new_file);
-  fs.writeFileSync(list_path, JSON.stringify(lists, null, 2))
-  console.log('Add your project to lists.json: ' + list_path)
-}
+  fs.writeFileSync(list_path, JSON.stringify(lists, null, 2));
+  console.log('Add your project to lists.json: ' + list_path);
+};
 
 if(load === 'init' && project) {
   // init project
-  twstat.init(load, project)
-}else if (load === 'init' && !project) {
+  twstat.init(load, project);
+
+} else if (load === 'init' && !project) {
     console.log("Usage: twstat init <project name>");
-}else {
-  if(path.extname(load) === '.js' && w){
+} else {
+
+  if (path.extname(load) === '.js' && w) {
     twstat.build(load, w);
-  }else if(path.extname(load) === '.js' && !w){
+  } else if (path.extname(load) === '.js' && !w) {
     twstat.build(load);
-  }else{
+  } else {
     console.log("Usage: twstat <twstat configuration file>");
   }
+
 }
