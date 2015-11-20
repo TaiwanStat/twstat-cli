@@ -49,7 +49,8 @@ twstat.init = function(load, project) {
     "title": project,
     "url": project,
     "img": "images/" + project + ".png",
-    "description": "Project description"
+    "description": "Project description",
+    "author": "Your Name"
   });
 
   var new_file = path.join(process.cwd(), project, 'index.hbs');
